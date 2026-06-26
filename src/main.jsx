@@ -1,19 +1,17 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App, {LrahosSlider} from './App.jsx' 
+import ReactDOM from 'react-dom/client'
+import {App,LrahosSlider,Apps} from './App.jsx' 
 import './index.css'        
 import 'swiper/css';
 import 'swiper/css/navigation'; 
 import 'swiper/css/pagination'; 
+import { BrowserRouter } from 'react-router-dom'
 
-createRoot(document.getElementById('swp')).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
-createRoot(document.getElementById(`lrahosswiper`)).render(
-    <StrictMode>
-    <LrahosSlider />
-  </StrictMode>,
-)
-
+    <BrowserRouter>
+      <Apps/>
+    </BrowserRouter>
+  </StrictMode>
+);

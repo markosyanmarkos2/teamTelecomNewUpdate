@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+
+// Տեղադրեք Ձեր իրական կոնֆիգուրացիան Firebase Console-ից
 const firebaseConfig = {
   apiKey: "AIzaSyChG97-VGgGYtnGbGHALo5HXOREYt6KcQk",
   authDomain: "teamnewproject-f5104.firebaseapp.com",
@@ -12,5 +13,4 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 export const db = getFirestore(app);

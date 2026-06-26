@@ -11,6 +11,15 @@ header {
     z-index: 999;
 }
 
+.wegb {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
 .fix {
     position: fixed;
     width: 100%;
@@ -21,11 +30,13 @@ header {
     display: flex;
     max-width: 1260px;
     margin: auto;
-    justify-content: space-between;
+    justify-content: space-between
 }
 
 .contanier {
     background-color: #01415f;
+
+
 }
 
 .contanier2 {
@@ -45,13 +56,19 @@ header {
     color: white;
     padding: 11px 20px;
     cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .gap {
     gap: 10px;
 }
 
-.back {
+.active {
     background-color: rgb(255, 255, 255, 0.2);
     padding: 11px 20px;
     font-size: 14px;
@@ -146,6 +163,7 @@ header {
 }
 
 #mas1 {
+    display: flex;
     cursor: pointer;
     padding-right: 90px;
 }
@@ -230,10 +248,24 @@ header {
     justify-content: space-between;
 }
 
+.strs {
+    color: white;
+    font-size: 30px;
+    font-family: sans-serif;
+    position: relative;
+    z-index: 900;
+}
+
 .ft {
     font-size: 50px;
     font-family: sans-serif;
     width: 550px;
+}
+
+.span {
+    max-width: 300px;
+    font-size: 30px;
+    font-family: sans-serif;
 }
 
 .mecf {
@@ -295,7 +327,7 @@ header {
     padding: 50px;
     height: 100%;
     box-sizing: border-box;
-    width: 52%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -543,9 +575,18 @@ header {
     animation: fadeInRight 2s;
 }
 
+.poqrspan {
+
+    color: rgb(255, 255, 255, 0.8);
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 500;
+    line-height: 24px;
+    max-width: 280px;
+}
+
 .nk {
-    
-    background-image: url(https://www.telecomarmenia.am/images/promo/1/16510462295535.png);
+    background-image: url(https://www.telecomarmenia.am/images/promo/1/16509737509423.png);
     background-size: auto;
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -554,6 +595,40 @@ header {
     top: 0;
     width: 100%;
 }
+
+.nk2 {
+    background-image: url(https://www.telecomarmenia.am/images/promo/1/16509737385483.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+}
+
+.nk3 {
+    background-image: url(https://www.telecomarmenia.am/images/promo/1/16509737228197.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+}
+
+.nk4 {
+    background-image: url(https://www.telecomarmenia.am/images/promo/1/16509737068164.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+}
+
 .scrol1,
 .scrol2 {
     opacity: 0;
@@ -565,6 +640,129 @@ header {
     opacity: 1;
     visibility: visible;
 }
+
+.andzmek {
+    background-color: #f5f6f7;
+    box-sizing: border-box;
+    height: 100%;
+    width: 596px;
+}
+
+.fixed {
+    padding: 60px 100px 38px;
+    top: 0;
+    left: 0;
+    position: fixed;
+
+}
+
+.butis {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: sans-serif;
+    width: 50%;
+    border: 0;
+    color: #2c3843;
+    background-color: #f5f6f7;
+    margin-bottom: 20px;
+}
+
+.gic {
+    border-bottom: 2px solid aqua;
+}
+
+.in {
+    border: 0;
+    border-bottom: 1px solid gray;
+}
+
+.inputner {
+    margin: 0 5px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.ayl {
+    width: 97.4%;
+    margin: 0 5px;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 0;
+    background-color: #f04d4d;
+    color: white;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+.wht {
+    width: 97.4%;
+    margin: 0 5px;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 0;
+    background-color: white;
+    color: #f04d4d;
+    border: 1px solid #f04d4d;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+.veching {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.forum {
+    width: 396px;
+    padding: 50px 20px;
+    box-shadow: 1px 1px 5px black;
+    box-sizing: border-box;
+}
+
+.andzerku {
+    width: 64%;
+    background: url(https://www.telecomarmenia.am/myaccount/img/bg-image.png?v=2) no-repeat center top;
+    ;
+    display: flex;
+    background-size: cover;
+}
+.mini{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.store1 {
+    display: flex;
+    height: 60px;
+    width: 202px;
+    background-image: url(https://www.telecomarmenia.am/myaccount/img/sprite2x.png?v=32);
+    background-size: 500px auto;
+    background-position: -2px -64px;
+}
+.store2{
+    display: flex;
+    height: 60px;
+    width: 202px;
+        background-position: -206px -64px;
+        background-image: url(https://www.telecomarmenia.am/myaccount/img/sprite2x.png?v=32);
+        background-size: 500px auto;
+        background-repeat: no-repeat;
+}
+.miniwrp{
+    display: flex;
+    align-items: end;
+}
+.store{
+    padding-bottom: 50px;
+}
+.wrp{
+    display: flex;
+    justify-content: center;
+}
+
 @keyframes fadeInLeft {
     from {
         opacity: 0;

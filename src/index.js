@@ -1,24 +1,10 @@
-let scrol1 = document.querySelectorAll(".scrol1");
-let zind = document.querySelector(".zzz")
-window.addEventListener("scroll", () => {
-    if (window.scrollY >= 200 && window.scrollY <= 1000) {
-        scrol1.forEach(el =>{
-            el.classList.add(
-            "anim"
-        );
-        })
-    }
-});
+// import { doc } from "firebase/firestore";
 
-let scrol2 = document.querySelectorAll(".scrol2")
+// console.log(window.location.pathname);
+// let anhat = document.querySelector(".anhat")
+// let biznes = document.querySelector(".biznes")
+// let eshop = document.querySelector(".eshop")
+// if (window.location.pathname === "/biznes") {
+//     anhat.classList.add("back")
+// }
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY >= 200 && window.scrollY <= 1000) {
-        scrol2.forEach(el =>{
-            el.classList.add(
-            "animright"
-            );
-        
-        })
-    }
-});
