@@ -550,11 +550,18 @@ body::-webkit-scrollbar {
     text-decoration: underline;
     color: rgba(255, 255, 255, 1);
 }
-
+.hoverion a{
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+}
 .hoverion:hover {
     text-decoration: underline;
+    color: rgba(255, 255, 255, 0.5);
 }
-
+.mrj{
+    max-width:1260px;
+    margin: auto;
+}
 .backleft {
     animation: backInLeft 1s;
 }
@@ -728,12 +735,14 @@ body::-webkit-scrollbar {
     display: flex;
     background-size: cover;
 }
-.mini{
+
+.mini {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .store1 {
     display: flex;
     height: 60px;
@@ -742,27 +751,235 @@ body::-webkit-scrollbar {
     background-size: 500px auto;
     background-position: -2px -64px;
 }
-.store2{
+
+.store2 {
     display: flex;
     height: 60px;
     width: 202px;
-        background-position: -206px -64px;
-        background-image: url(https://www.telecomarmenia.am/myaccount/img/sprite2x.png?v=32);
-        background-size: 500px auto;
-        background-repeat: no-repeat;
+    background-position: -206px -64px;
+    background-image: url(https://www.telecomarmenia.am/myaccount/img/sprite2x.png?v=32);
+    background-size: 500px auto;
+    background-repeat: no-repeat;
 }
-.miniwrp{
+
+.miniwrp {
     display: flex;
     align-items: end;
 }
-.store{
+
+.store {
     padding-bottom: 50px;
 }
-.wrp{
+
+.wrp {
     display: flex;
     justify-content: center;
 }
 
+.keen-slider {
+    height: 380px;
+
+}
+
+.essl {
+    min-height: 500px;
+}
+
+.jst {
+    text-align: center;
+    cursor: pointer;
+}
+
+.keen-slider__slide {
+    width: 350px;
+    height: 300px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 2px rgb(182, 182, 182);
+}
+
+.dver img {
+    width: 45px;
+}
+
+.dver {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #2c3843;
+    font-family: sans-serif;
+    padding: 20px 26px;
+    background-color: rgb(212, 212, 212);
+    border: 1px solid rgb(184, 184, 184);
+    border-radius: 10px;
+    min-width: 295px;
+    gap: 15px;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-right: 26px;
+}
+
+.dver:hover {
+    box-shadow: 0px 0px 20px rgb(172, 172, 172);
+    transition: 0.2s;
+}
+
+.chors {
+    display: flex;
+
+}
+
+.mas1eshop {
+    padding: 30px 15px;
+    color: #01415f;
+    font-size: 15px;
+    min-height: 50px;
+}
+
+.mas2eshop span {
+    display: flex;
+    font-size: 20px;
+    padding: 0 15px;
+    gap: 10px;
+}
+
+.mas3eshop {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.mas3eshop img {
+    width: 215px;
+
+}
+
+.gnayin {
+    font-size: 20px;
+    color: #022739;
+}
+
+.mas4eshop {
+    padding: 0 15px;
+}
+.mas5eshop button{
+    border: 0;
+}
+.mas5eshop{
+    display: flex;
+    justify-content: center;
+}
+.bt{
+    display: flex;
+    align-items: center;
+    width: 260px;
+    border: 1px solid #f04d4d;
+    justify-content: center;
+    border-radius: 15px;
+    color: #f04d4d;
+    padding: 5px;
+    
+}
+.zamb {
+    display: flex;
+    background-image: url(https://www.telecomarmenia.am/eshop/img/new/sprite.png?v=5);
+    background-position: -238px -170px;
+    background-size: auto;
+    width: 24px;
+    height: 23px;
+    background-repeat: no-repeat;
+
+}
+.keen-slider {
+    overflow: visible;
+}
+
+.keen-slider__slide {
+    overflow: visible;
+}
+.essl{
+    margin-top: 70px;
+}
+.mech{
+    font-family: sans-serif;
+    color: #2c3843;
+    font-size: 25px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.teamplaymarg{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+.ynderku{
+    display: flex;
+    margin-bottom: 10px;
+}
+.miev{
+    display: flex;
+    width: 150px;
+    justify-content: center;
+    padding: 15px;
+    font-size: 25px;
+}
+.ios{
+    border-bottom: 5px solid aqua;
+    color: #2c3843;
+}
+.and{
+    color: rgb(156, 156, 156);
+    border-bottom: 1px solid rgb(194, 194, 194);
+}
+.teamerku{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.appstore{
+    background-image: url(https://www.telecomarmenia.am/img/redesign/sprite.png?v=2);
+    background-position: -147px -117px;
+    background-size: auto;
+    height: 50px;
+    margin-right: 15px;
+    width: 180px;
+}
+.playmarket{
+    background-image: url(https://www.telecomarmenia.am/img/redesign/sprite.png?v=2);
+    background-position: -55px -172px;;
+    background-size: auto;
+    height: 50px;
+    margin-right: 15px;
+    width: 180px;
+}
+.teammekapp{
+    display: flex;
+}
+.post{
+    display: flex;
+    align-items: center;
+}
+.sliderimg{
+    display: flex;
+    gap: 30px;
+    
+}
+.ulik{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+    color: #666e75;
+    margin-left: 18px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.innyvec{
+    display: flex;
+    font-size: 19px;
+    max-width: 900px;
+    padding-top: 30px;
+}
 @keyframes fadeInLeft {
     from {
         opacity: 0;

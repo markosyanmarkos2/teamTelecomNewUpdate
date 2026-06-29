@@ -1,19 +1,28 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { db } from "./firebase"; // Քո ստեղծած firebase config ֆայլը
-import { collection, getDocs } from "firebase/firestore";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+
+
+import { db } from "./firebase";
+import { doc, collection, getDocs, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
-import { Routes, Route, NavLink,Link } from 'react-router-dom';
+import { Routes, Route, NavLink, Link } from 'react-router-dom';
 import Anhat from './pages/anhat';
 import About from './pages/biznes';
-import Contact from './pages/eshop';
+import eshop from './pages/eshop';
 import Andzsen from './pages/andzsen';
-
+import Eshop from './pages/eshop';
+import Teamtv from './pages/teamtv';
+import Myteam from './pages/myteam';
+import Teampay from "./pages/teampay"
+import Teamenergy from './pages/teamenergy';
+import { arr } from "./index"
 function Navbar() {
   return (
     <>
-      
+
 
       <div id="mas1">
         <NavLink to="/" className="align">Անհատներին</NavLink>
@@ -36,24 +45,24 @@ function Navbar() {
             <span className="fc">Eng</span>
           </div>
         </div>
-          <Link style={{textDecoration:"none"}} to="/andzsen">
-        <div className="xumb3">
-          <div className="ops">
-            <i
-              className="fa-regular fa-user"
-              style={{ color: "rgb(255, 255, 255)" }}
-            />
-            <span
-              style={{
-                color: "white",
-                fontFamily: "monospace",
-                fontSize: 14
-              }}
-            >
-              Անձնական գրասենյակ
-            </span>
+        <Link style={{ textDecoration: "none" }} to="/andzsen">
+          <div className="xumb3">
+            <div className="ops">
+              <i
+                className="fa-regular fa-user"
+                style={{ color: "rgb(255, 255, 255)" }}
+              />
+              <span
+                style={{
+                  color: "white",
+                  fontFamily: "monospace",
+                  fontSize: 14
+                }}
+              >
+                Անձնական գրասենյակ
+              </span>
+            </div>
           </div>
-        </div>
         </Link>
       </div>
 
@@ -63,22 +72,42 @@ function Navbar() {
 }
 
 
+
 function Apps() {
   return (
     <Routes>
       <Route path="/" element={<Anhat />} />
       <Route path="/biznes" element={<About />} />
-      <Route path="/eshop" element={<Contact />} />
+      <Route path="/eshop" element={<Eshop />} />
       <Route path='/andzsen' element={<Andzsen />}></Route>
+      <Route path='/teamtv' element={<Teamtv />}></Route>
+      <Route path='/myteam' element={<Myteam />}></Route>
+      <Route path='/teampay' element={<Teampay />}></Route>
+      <Route path='/teamenergy' element={<Teamenergy />}></Route>
     </Routes>
   );
+}
+function FooterRoute() {
+  return (
+  <>
+  <li className="hoverion"><Link to="/teamtv" > TeamTv</Link></li>
+  <li className="hoverion"><Link to="/myteam">My Team</Link></li>
+  <li className="hoverion"><Link to="/teampay">Team Pay</Link></li>
+  <li className="hoverion"><Link to="/teamenergy">Team Energy</Link></li>
+    
+    
+    
+    
+    
+  </>
+  )
 }
 function Head() {
   return (
     <>
       <div className="contanier">
         <div className="headeriTop">
-       <Navbar />
+          <Navbar />
         </div>
       </div>
       <div className="contanier2">
@@ -240,7 +269,141 @@ function Head() {
   )
 }
 
+function Owl() {
+  const [sliderRef] = useKeenSlider({
+    loop: true,
+    slides: {
+      perView: 4,
+      spacing: 20,
+    },
+  });
 
+  // return (
+
+  // );
+}
+function EshopSlider() {
+  let [eshop, setNews] = useState([]);
+  let [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let fetch = async () => {
+      try {
+        let eshopSlider = collection(db, "eshop");
+        let querySnapshot = await getDocs(eshopSlider);
+
+        let allslide = [];
+
+        querySnapshot.docs.forEach((doc) => {
+          let docData = doc.data();
+
+          let currentDocArray = Object.values(docData);
+
+          allslide = [...allslide, ...currentDocArray];
+        });
+
+        setNews(allslide);
+      } catch (error) {
+        console.error("Տվյալները ստանալիս սխալ տեղի ունեցավ: ",);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetch();
+  }, []);
+  return (
+    <div className="swp" style={{ width: '100%' }}>
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={30}
+        slidesPerView={1}
+        navigation={true}
+        pagination={{ clickable: true }}
+        // autoplay={{ delay: 3000 }}
+        loop={true}
+      >
+        {eshop.map((el) => (
+          <SwiperSlide className='jst'><img src={el} alt="" /></SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  )
+}
+function Get() {
+  let [appo, setNews] = useState([]);
+  let [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let fetchNews = async () => {
+      try {
+        let appo = collection(db, "apranqnerslider");
+        let querySnapshot = await getDocs(appo);
+
+        let allNewsData = [];
+
+        querySnapshot.docs.forEach((doc) => {
+          allNewsData.push({
+            ...doc.data(),
+          });
+        });
+
+        setNews(allNewsData);
+      } catch (error) {
+        console.error("Տվյալները ստանալիս սխալ տեղի ունեցավ: ",);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+  const [sliderRef, instanceRef] = useKeenSlider({
+    loop: true,
+    slides: {
+      perView: 4,
+      spacing: 25,
+    },
+  });
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
+
+  return (
+    <>
+    
+      <div ref={sliderRef} className='keen-slider essl'>
+        {appo.map((el) => (
+          <div className='keen-slider__slide yndi ' style={{
+          }}>
+            <div className="ynd">
+              <div className="mas1eshop pd">
+              <h2>{el.title}</h2>
+            </div>
+            <div className="mas2eshop pd">
+              <span>
+                <input type="checkbox" />
+                {el.span}
+              </span>
+            </div>
+            <div className="mas3eshop pd">
+                <img src={el.img} alt="" />
+            </div>
+            <div className="mas4eshop pd">
+              <div className="gnayin">{el.gin}</div>
+            </div>
+            <div className="mas5eshop pd">
+              <div className="bt" style={{marginTop:"20px"}}>
+                <span className='zamb'></span>
+                <span >Ավելացնել զամբյուղ</span>
+              </div>
+            </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  )
+}
 function LrahosSlider() {
   let [info, setNews] = useState([]);
   let [loading, setLoading] = useState(true);
@@ -253,18 +416,16 @@ function LrahosSlider() {
         let allNewsData = [];
 
         querySnapshot.docs.forEach((doc) => {
-          let docData = doc.data(); // Սա վերադարձնում է { info1: {...}, info2: {...} }
+          let docData = doc.data();
 
-          // ✨ ԱՅՍՏԵՂ Է ԳԱՂՏՆԻՔԸ. Օբյեկտի արժեքները (info1, info2) սարքում ենք Array
           let currentDocArray = Object.values(docData);
 
-          allNewsData = [...allNewsData, currentDocArray];
+          allNewsData = [...allNewsData, ...currentDocArray];
         });
 
-        // Հիմա սրա մեջ կլինի ճիշտ երկհարկանի մասսիվ, ոնց որ դու ուզում էիր
         setNews(allNewsData);
       } catch (error) {
-        console.error("Տվյալները ստանալիս սխալ տեղի ունեցավ: ", error);
+        console.error("Տվյալները ստանալիս սխալ տեղի ունեցավ: ",);
       } finally {
         setLoading(false);
       }
@@ -272,25 +433,57 @@ function LrahosSlider() {
 
     fetchNews();
   }, []);
+  const [sliderRef, instanceRef] = useKeenSlider({
+    loop: true,
+    slides: {
+      perView: 3,
+      spacing: 30,
+    },
+  });
   if (loading) {
     return <div className="spinner" style={{ display: "flex", alignItems: "center" }}>Սպասեք, տվյալները բեռնվում են...</div>;
   }
+  console.log(info);
 
   return (
-    <div className="lrahosSwiper" style={{ width: "100%", padding: "80px", boxSizing: "border-box" }}>
+    <div className="lrahosSwiper" style={{ maxWidth: "1300px", margin: "auto", padding: "80px 0", boxSizing: "border-box" }}>
       <div className="text" style={{ display: "flex", justifyContent: "center", fontSize: "20px", color: "#2c3843", marginBottom: "20px" }}>
         <h1>ԼՐԱՀՈՍ</h1>
       </div>
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={30}
-        slidesPerView={1}
-        navigation={true}
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
-        loop={true}
+      <button
+        onClick={() => instanceRef.current?.prev()}
+        style={btnLeft}
       >
+        ‹
+      </button>
+      <button
+        onClick={() => instanceRef.current?.next()}
+        style={btnRight}
+      >
+        ›
+      </button>
+      <div ref={sliderRef} className='keen-slider'>
         {info.map((el) => (
+          <div className='keen-slider__slide' style={{
+            maxWidth: "300px",
+            borderRadius: "15px",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+            border: "0.5px solid rgb(227, 227, 227)",
+            backgroundColor: "#f2f2f2",
+            cursor: "pointer",
+
+          }}>
+            <img src={el.img} alt="" />
+            <div className="paddi">
+              <span style={{ color: "#666e75", paddingBottom: "10px" }}>{el.data}</span>
+              <span className='wegb' style={{ fontSize: "25px", fontWeight: "900", color: "#2c3843", }}>{el.title}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* {info.map((el) => (
           <SwiperSlide style={{ display: "flex", gap: "30px", justifyContent: "center" }}>
             {el.map((item) => {
               return (
@@ -314,11 +507,56 @@ function LrahosSlider() {
             })}
 
           </SwiperSlide>
-        ))}
-      </Swiper>
+        ))} */}
+
     </div>
   );
 }
+function Chors() {
+  return (
+    <div className="chors">
+      {arr.map((el) => {
+        return (
+          <div className="dver">
+            <img src={el.img} alt="" />
+            <span>{el.text}</span>
+          </div>
+        )
+      })}
+
+    </div>
+
+  )
+}
+const btnLeft = {
+  position: "absolute",
+  left: "70px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  zIndex: 10,
+  background: "#000",
+  color: "#fff",
+  border: "none",
+  width: "40px",
+  height: "40px",
+  borderRadius: "50%",
+  cursor: "pointer",
+};
+
+const btnRight = {
+  position: "absolute",
+  right: "70px",
+  top: "50%",
+  transform: "translateY(-50%)",
+  zIndex: 10,
+  background: "#000",
+  color: "#fff",
+  border: "none",
+  width: "40px",
+  height: "40px",
+  borderRadius: "50%",
+  cursor: "pointer",
+};
 function Slglv() {
   let [sliderglavni, setNews] = useState([]);
 
@@ -1020,30 +1258,7 @@ function Foot() {
                   gap: 10
                 }}
               >
-                <li
-                  className="hoverion"
-                  style={{ color: "rgb(255, 255, 255,0.5)" }}
-                >
-                  TeamTV
-                </li>
-                <li
-                  className="hoverion"
-                  style={{ color: "rgb(255, 255, 255,0.5)" }}
-                >
-                  My Team
-                </li>
-                <li
-                  className="hoverion"
-                  style={{ color: "rgb(255, 255, 255,0.5)" }}
-                >
-                  TeamPay
-                </li>
-                <li
-                  className="hoverion"
-                  style={{ color: "rgb(255, 255, 255,0.5)" }}
-                >
-                  Team Energy
-                </li>
+                <FooterRoute />
               </ul>
             </div>
           </div>
@@ -1133,5 +1348,5 @@ function Sec() {
   )
 }
 
-export { LrahosSlider, App, Navbar, Apps, Head, Slglv, Foot, Sec,  };
+export { Get, Chors, LrahosSlider, App, Navbar, Apps, Head, Slglv, Foot, Sec, Owl, EshopSlider };
 
